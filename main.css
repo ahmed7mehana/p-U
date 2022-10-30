@@ -11,7 +11,6 @@ body {
     color: #fff;
   }
   
-  /* Typeography General*/
   h1 {
     font-family: "Fira Sans", sans-serif;
     font-size: 3em;
@@ -36,13 +35,16 @@ body {
     line-height: 1.6em;
     color: #eee;
   }
-  
-  /* ---- Layout Rules ---- */
+a{
+  color: black;
+  text-decoration: none;
+}
+
   main {
     margin: 10vh 1em 10vh;
   }
   
-  .main-hero {
+  .hero {
     min-height: 40vh;
     padding-top: 3em;
   }
@@ -52,10 +54,8 @@ body {
     min-height: 90vh;
   }
   
-  /* ---- Module Rules ---- */
   
-  /* Navigation Styles*/
-  .navbar__menu #btn {
+  .nav_menu #btn {
     position: absolute;
     top: 149%;
     border-radius: 10px;
@@ -69,77 +69,60 @@ body {
     color: white;
     cursor: pointer;
   }
-  .navbar__menu #btn:hover {
+  .nav_menu #btn:hover {
     background-color: #26dff7;
     color: rgb(255, 255, 255);
   }
-  .navbar__menu ul {
+  .nav_menu ul {
     padding-left: 0;
     margin: 0;
     text-align: right;
   }
   
-  .navbar__menu li {
+  .nav_menu li {
     display: inline-block;
+    padding: 10px;
   }
-  .navbar__menu .menu__link {
-    display: block;
-    padding: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .navbar__menu .menu__link:hover {
-    background: #26dff7;
-    color: #fff;
-    transition: ease 0.3s all;
-  }
-  
-  /* make a different style for active links */
-  .navbar__menu .active-link {
+
+  .nav_menu .active-L {
     background: #000000;
     color: rgb(255, 255, 255);
     transition: ease 0.3s all;
+    padding: 10px;
   }
   
-  /* Header Styles */
-  .page__header {
+  /*---------------- Header  ----------------*/
+  .header {
     background: #fff;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 5;
   }
-  /* Footer Styles */
-  .page__footer {
+  /*------------------- Footer --------------- */
+  .footer {
     background: #000;
-    padding: 3em;
     color: #fff;
   }
-  .page__footer p {
+  .footer p {
     color: #fff;
-  }
+    margin: 0;
+    padding: 6px;
+    text-align: center;  }
   
-  /* ---- Theme Rules ---- */
-  /* Landing Container Styles */
-  .landing__container {
+  /*-------------------- Container --------------------- */
+  .container {
     padding: 1em;
     text-align: left;
   }
   @media only screen and (min-width: 35em) {
-    .landing__container {
+    .container {
       max-width: 50em;
       padding: 4em;
     }
   }
-  section:nth-of-type(even) .landing__container {
-    margin-right: 0;
-    margin-left: auto;
-    text-align: right;
-  }
   
-  section:nth-of-type(odd) .landing__container::before {
+  section:nth-of-type(odd) .container::before {
     content: "";
     background: rgba(255, 255, 255, 0.187);
     position: absolute;
@@ -151,7 +134,13 @@ body {
     transition: ease 0.5s all;
   }
   
-  section:nth-of-type(even) .landing__container::before {
+  section:nth-of-type(even) .container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  section:nth-of-type(even) .container::before {
     content: "";
     background: rgb(255, 255, 255);
     background: linear-gradient(
@@ -170,26 +159,8 @@ body {
     transition: ease 0.5s all;
   }
   
-  section:nth-of-type(3n) .landing__container::after {
-    content: "";
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -5;
-    width: 10vh;
-    height: 10vh;
-    border-radius: 50%;
-    opacity: 0;
-    transition: ease 0.5s all;
-  }
   
-  section:nth-of-type(3n + 1) .landing__container::after {
+  section:nth-of-type(3n + 1) .container::after {
     content: "";
     background: rgb(255, 255, 255);
     background: linear-gradient(
@@ -208,7 +179,26 @@ body {
     transition: ease 0.5s all;
   }
   
-  section.your-active-class {
+  section:nth-of-type(3n) .container::after {
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+  }
+
+  section.active-C {
     background: rgb(108 30 121 0.5);
     background: linear-gradient(
       0deg,
@@ -217,18 +207,18 @@ body {
     );
     border-radius: 20px;
   }
-  
-  section.your-active-class .landing__container::before {
+  section.active-C .container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+  }
+
+  section.active-C .container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
   }
   
-  section.your-active-class .landing__container::after {
-    opacity: 1;
-    animation: rotate 5s linear 0s infinite forwards reverse;
-  }
+
   
-  /* Section Active Styles Keyframe Animations */
   @keyframes rotate {
     from {
       transform: rotate(0deg) translate(-1em) rotate(0deg);
@@ -237,27 +227,26 @@ body {
       transform: rotate(360deg) translate(-1em) rotate(-360deg);
     }
   }
-  /****************************** making some changes on the button on small screens **************************/
+
   @media only screen and (max-width: 39.5em) {
-    .navbar__menu #btn {
+    .nav_menu #btn {
       top: 100%;
       font-size: 17px;
       width: 7.5em;
       height: 1.8em;
     }
   }
-  #to-top {
-      border-radius: 51%;
-      background-color: #e91e63;
-      width: 70px;
-      height: 70px;
-      text-align: center;
-      line-height: 70px;
-      position: fixed;
-      bottom: -6px;
-      top: 89%;
-      right: 20px;
-      cursor: pointer;
-    /* display: none; */
+  #top {
+    border-radius: 51%;
+    background-color: #000000;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    position: fixed;
+    bottom: -6px;
+    top: 89%;
+    right: 20px;
+    cursor: pointer;
   }
   
